@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clustered News Articles</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+</head>
+<body>
+    <nav>
+        <ul>
+            <li><a href="/">Home</a></li>
+            <li><a href="/cluster/images">Clustered Images</a></li>
+        </ul>
+    </nav>
+    <main>
+        {% for cluster_id, articles in clusters.items() %}
+        <section>
+            <h2>Cluster {{ cluster_id + 1 }}</h2>
+            <ul>
+                {% for article in articles %}
+                <li>{{ article }}</li>
+                {% endfor %}
+            </ul>
+        </section>
+        {% endfor %}
+    </main>
+    <footer>
+        <p>&copy; 2024 News Clustering App</p>
+    </footer>
+</body>
+</html>

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clustered Images</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+</head>
+<body>
+    <nav>
+        <ul>
+            <li><a href="/">Home</a></li>
+            <li><a href="/cluster/articles">Clustered Articles</a></li>
+        </ul>
+    </nav>
+    <main>
+        {% for cluster_id, images in clustered_images.items() %}
+        <section>
+            <h2>Cluster {{ cluster_id + 1 }}</h2>
+            <div class="image-grid">
+                {% for image_path in images %}
+                <div class="image-container">
+                    <img src="{{ image_path }}" alt="Product Image">
+                </div>
+                {% endfor %}
+            </div>
+        </section>
+        {% endfor %}
+    </main>
+</body>
+</html>
